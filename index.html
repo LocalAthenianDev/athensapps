@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Athens Apps | Εφαρμογές από τα ανοιχτά δεδομένα της Αθήνας</title>
+<meta name="description" content="Πιλοτικές εφαρμογές που αξιοποιούν τα ανοιχτά δεδομένα του Δήμου Αθηναίων. Ανοιχτός κώδικας, ανοιχτά εργαλεία, για πολίτες, επιχειρήσεις και ερευνητές.">
+<meta property="og:title" content="Athens Apps">
+<meta property="og:description" content="Πιλοτικές εφαρμογές από τα ανοιχτά δεδομένα της Αθήνας.">
+<meta property="og:url" content="https://athensapps.gr">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://athensapps.gr">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b3a6b'/%3E%3Cpath d='M14 46h36M18 46V26M26 46V26M38 46V26M46 46V26M12 26h40L32 14z' stroke='%23f4ede1' stroke-width='4' fill='none' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;700&family=Noto+Serif+Display:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f1e8; --surface:#fffdf8; --ink:#16233a; --muted:#5b6578;
+  --line:#e2d9c8; --blue:#1b3a6b; --terra:#c4572e; --olive:#6f7d3c;
+  --chip:#efe6d6; --shadow:0 1px 2px rgba(22,35,58,.06),0 8px 24px rgba(22,35,58,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1624; --surface:#16203a; --ink:#ece6da; --muted:#a3abbc;
+    --line:#26324d; --blue:#8fb0e8; --terra:#e9845c; --olive:#b5c27a;
+    --chip:#1e2a46; --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25);
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 Commissioner,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* header */
+header.top{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;letter-spacing:.01em}
+.brand svg{width:32px;height:32px}
+.brand span b{color:var(--terra)}
+.nav ul{list-style:none;display:flex;gap:24px;margin:0;padding:0;font-size:15px;font-weight:500}
+.nav ul a{text-decoration:none;color:var(--muted)}
+.nav ul a:hover{color:var(--ink)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero .grid{position:absolute;inset:0;opacity:.55;pointer-events:none}
+.hero-inner{position:relative;padding:96px 0 88px;max-width:760px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--terra)}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--terra)}
+h1{font-family:"Noto Serif Display",Georgia,serif;font-weight:700;font-size:clamp(40px,7vw,72px);line-height:1.04;margin:18px 0 22px;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--blue)}
+.lead{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:620px;margin:0 0 32px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid var(--ink);transition:transform .15s,background .15s}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn:hover{transform:translateY(-1px)}
+.btn.ghost:hover{background:var(--surface)}
+
+/* sections */
+section{padding:88px 0}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:36px}
+h2{font-family:"Noto Serif Display",Georgia,serif;font-size:clamp(30px,4.5vw,44px);line-height:1.1;margin:8px 0 0}
+.sec-head p{color:var(--muted);margin:0;max-width:420px}
+
+/* pilots */
+.pilots{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.card{position:relative;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:var(--shadow);text-decoration:none;transition:transform .2s,border-color .2s}
+a.card:hover{transform:translateY(-3px);border-color:var(--terra)}
+.card .ico{width:48px;height:48px;border-radius:12px;display:grid;place-items:center;margin-bottom:18px;color:#fff}
+.card .ico svg{width:26px;height:26px}
+.status{position:absolute;top:22px;right:22px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--chip);color:var(--muted)}
+.status.live{color:var(--olive)}
+.status.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--olive);margin-right:6px;vertical-align:1px;animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.card h3{font-size:21px;margin:0 0 6px}
+.card p{color:var(--muted);margin:0 0 18px;font-size:15.5px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;margin-bottom:18px}
+.tags span{font-size:12.5px;background:var(--chip);padding:3px 10px;border-radius:999px;color:var(--muted)}
+.go{font-weight:600;font-size:15px;color:var(--terra);display:flex;align-items:center;gap:6px}
+.card.soon{opacity:.72;box-shadow:none;border-style:dashed}
+.card.soon .go{color:var(--muted)}
+.url{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--muted);margin-bottom:12px;word-break:break-all}
+
+/* about */
+.about{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;margin-top:8px}
+.pillar .n{font-family:"Noto Serif Display",Georgia,serif;font-size:40px;color:var(--terra);line-height:1}
+.pillar h3{margin:12px 0 6px;font-size:19px}
+.pillar p{margin:0;color:var(--muted);font-size:15.5px}
+
+/* maker */
+.maker{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.maker p{color:var(--muted)}
+.links{display:flex;flex-direction:column;gap:10px}
+.links a{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:var(--surface);border:1px solid var(--line);border-radius:14px;text-decoration:none;font-weight:600}
+.links a:hover{border-color:var(--blue)}
+.links a small{font-weight:400;color:var(--muted)}
+
+footer{border-top:1px solid var(--line);padding:28px 0 40px;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+.note{font-size:13.5px;color:var(--muted);max-width:640px}
+
+@media (max-width:720px){
+  .nav ul{display:none}
+  .hero-inner{padding:64px 0 60px}
+  section{padding:64px 0}
+  .maker{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="#">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="var(--blue)"/><path d="M14 46h36M18 46V26M26 46V26M38 46V26M46 46V26M12 26h40L32 14z" stroke="var(--bg)" stroke-width="4" fill="none" stroke-linejoin="round"/></svg>
+      <span>athens<b>apps</b>.gr</span>
+    </a>
+    <ul>
+      <li><a href="#pilots">Πιλοτικά</a></li>
+      <li><a href="#about">Η ιδέα</a></li>
+      <li><a href="#maker">Ποιος το φτιάχνει</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<div class="hero">
+  <svg class="grid" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="var(--line)" stroke-width="1.5">
+      <path d="M-20 120 L1220 60"/><path d="M-20 260 L1220 230"/><path d="M-20 420 L1220 440"/>
+      <path d="M720 -20 L640 620"/><path d="M880 -20 L900 620"/><path d="M1040 -20 L1110 620"/>
+      <path d="M560 -20 Q700 300 1220 340"/><path d="M600 620 Q900 360 1220 520"/>
+    </g>
+    <g fill="var(--terra)"><circle cx="884" cy="232" r="6"/><circle cx="1068" cy="436" r="5" fill="var(--blue)"/><circle cx="694" cy="166" r="4" fill="var(--olive)"/></g>
+  </svg>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Ανοιχτά δεδομένα · Αθήνα</span>
+    <h1>Η πόλη σε δεδομένα. <em>Τα δεδομένα σε εφαρμογές.</em></h1>
+    <p class="lead">Πιλοτικές εφαρμογές που μετατρέπουν τα ανοιχτά δεδομένα του Δήμου Αθηναίων σε κάτι χρήσιμο και κατανοητό για πολίτες, επιχειρήσεις και ερευνητές. Κάθε εφαρμογή ζει στο δικό της subdomain και είναι φτιαγμένη με ανοιχτό κώδικα.</p>
+    <div class="cta">
+      <a class="btn primary" href="#pilots">Δες τα πιλοτικά →</a>
+      <a class="btn ghost" href="https://github.com/LocalAthenianDev" target="_blank" rel="noopener">Κώδικας στο GitHub</a>
+    </div>
+  </div>
+</div>
+
+<section id="pilots">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Πιλοτικά</span><h2>Οι εφαρμογές</h2></div>
+      <p>Νέες εφαρμογές προστίθενται καθώς δοκιμάζονται νέα σύνολα δεδομένων.</p>
+    </div>
+    <div class="pilots" id="pilot-list"></div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Η ιδέα</span><h2>Γιατί athensapps</h2></div>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><div class="n">01</div><h3>Από τα δεδομένα στην αξία</h3><p>Τα ανοιχτά δεδομένα έχουν νόημα όταν τα χρησιμοποιεί κάποιος. Κάθε πιλοτικό απαντά σε ένα συγκεκριμένο, πραγματικό ερώτημα για την πόλη.</p></div>
+      <div class="pillar"><div class="n">02</div><h3>Ανοιχτός κώδικας</h3><p>Όλες οι εφαρμογές χτίζονται με ανοιχτά εργαλεία και ο κώδικάς τους είναι δημόσιος, ώστε να μπορεί ο καθένας να τον ελέγξει, να τον βελτιώσει ή να τον ξαναχρησιμοποιήσει.</p></div>
+      <div class="pillar"><div class="n">03</div><h3>Μικρά, γρήγορα πειράματα</h3><p>Κάθε εφαρμογή ξεκινά ως πιλοτικό: δοκιμάζεται, μαθαίνει από τη χρήση και εξελίσσεται ή αποσύρεται.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="maker">
+  <div class="wrap maker">
+    <div>
+      <span class="eyebrow">Ποιος το φτιάχνει</span>
+      <h2>Thomas Ntoupis</h2>
+      <p>Ασχολούμαι με την ψηφιακή πολιτική, την τεχνητή νοημοσύνη και τις έξυπνες πόλεις. Το athensapps.gr είναι το εργαστήριό μου: εδώ δοκιμάζω ιδέες για το πώς τα δημόσια δεδομένα μπορούν να γίνουν εργαλεία για όλους.</p>
+      <p class="note">Το athensapps.gr είναι προσωπικό έργο και δεν αποτελεί επίσημη υπηρεσία του Δήμου Αθηναίων. Οι εφαρμογές βασίζονται σε δημόσια διαθέσιμα ανοιχτά δεδομένα.</p>
+    </div>
+    <div class="links">
+      <a href="https://github.com/LocalAthenianDev" target="_blank" rel="noopener">GitHub <small>LocalAthenianDev →</small></a>
+      <a href="https://www.linkedin.com/in/thomas-ntoupis" target="_blank" rel="noopener">LinkedIn <small>thomas-ntoupis →</small></a>
+      <a href="https://thomasthemoustache.com" target="_blank" rel="noopener">Προσωπικό site <small>thomasthemoustache.com →</small></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y"></span> athensapps.gr · Thomas Ntoupis</span>
+    <span>Φτιαγμένο με ανοιχτά δεδομένα και ανοιχτό κώδικα</span>
+  </div>
+</footer>
+
+<script>
+/* ===== Για να προσθέσεις νέο πιλοτικό, πρόσθεσε ένα αντικείμενο εδώ =====
+   status: "live" | "beta" | "soon"   (τα "soon" εμφανίζονται χωρίς link) */
+const PILOTS = [
+  {
+    name: "Athens Pulse",
+    url: "https://athenspulse.athensapps.gr",
+    status: "live",
+    color: "#c4572e",
+    icon: '<path d="M3 12h4l3-8 4 16 3-8h4" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',
+    description: "Η κίνηση της πόλης σε πραγματικό χρόνο από τα δεδομένα του Smart Neighbourhood WiFi. Εργαλείο για ακίνητα: πού κινείται ο κόσμος, για εμπορική και οικιστική χρήση.",
+    tags: ["Ακίνητα", "WiFi footfall", "Live API"]
+  },
+  {
+    name: "Οδοί της Αθήνας",
+    url: "https://streets.athensapps.gr",
+    status: "soon",
+    color: "#1b3a6b",
+    icon: '<path d="M4 20 10 4M20 20 14 4M12 6v2M12 11v2M12 16v2" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round"/>',
+    description: "Εξερεύνηση του οδικού δικτύου του Δήμου Αθηναίων μέσα από τα ανοιχτά δεδομένα των οδών.",
+    tags: ["Οδοί", "Χάρτης"]
+  }
+];
+
+const STATUS = { live: "Live", beta: "Beta", soon: "Σύντομα" };
+const list = document.getElementById("pilot-list");
+list.innerHTML = PILOTS.map(p => {
+  const soon = p.status === "soon";
+  const tag = soon ? "div" : "a";
+  const href = soon ? "" : ` href="${p.url}" target="_blank" rel="noopener"`;
+  return `<${tag} class="card${soon ? " soon" : ""}"${href}>
+    <span class="status ${p.status}">${STATUS[p.status]}</span>
+    <div class="ico" style="background:${p.color}"><svg viewBox="0 0 24 24">${p.icon}</svg></div>
+    <h3>${p.name}</h3>
+    <div class="url">${p.url.replace("https://", "")}</div>
+    <p>${p.description}</p>
+    <div class="tags">${p.tags.map(t => `<span>${t}</span>`).join("")}</div>
+    <span class="go">${soon ? "Σε εξέλιξη" : "Άνοιγμα εφαρμογής →"}</span>
+  </${tag}>`;
+}).join("");
+document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
