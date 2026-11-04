@@ -9,6 +9,7 @@
 | Athens Pulse | [pulse.athensapps.gr](https://pulse.athensapps.gr) | Live |
 | Athens Breath | [breath.athensapps.gr](https://breath.athensapps.gr) | Live |
 | Πού να παίξω | [sports.athensapps.gr](https://sports.athensapps.gr) | Live |
+| Τόποι της Αθήνας | [places.athensapps.gr](https://places.athensapps.gr) | Live |
 | Γειτονιές της Αθήνας | [athenshoods.gr](https://athenshoods.gr) | Live |
 | Οδοί της Αθήνας | streets.athensapps.gr | Σύντομα |
 
