@@ -37,3 +37,17 @@
 ## Άδεια
 
 MIT
+
+## Λογότυπο και εικόνες
+
+Στον φάκελο `brand/`:
+
+| Αρχείο | Χρήση |
+|---|---|
+| `logo.svg`, `logo-1200.png` | Κύριο λογότυπο (πινακίδα) |
+| `logo-inverse.svg`, `logo-inverse-1200.png` | Λογότυπο για σκούρο φόντο |
+| `logo-with-icon.svg`, `logo-with-icon-1200.png` | Σήμα μαζί με το όνομα |
+| `icon.svg`, `icon-512.png` | Σήμα AA |
+| `avatar.svg`, `avatar-1000.png` | Εικόνα προφίλ για social και GitHub |
+
+Στη ρίζα βρίσκονται τα `favicon.ico`, `favicon.svg`, `apple-touch-icon.png`, `icon-192.png` και `og-image.png` (εικόνα που εμφανίζεται όταν κοινοποιείται το link).
