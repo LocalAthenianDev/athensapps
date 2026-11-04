@@ -6,7 +6,8 @@
 
 | Εφαρμογή | URL | Κατάσταση |
 |---|---|---|
-| Athens Pulse | [athenspulse.athensapps.gr](https://athenspulse.athensapps.gr) | Live |
+| Athens Pulse | [pulse.athensapps.gr](https://pulse.athensapps.gr) | Live |
+| Athens Breath | [breath.athensapps.gr](https://breath.athensapps.gr) | Live |
 | Γειτονιές της Αθήνας | [athenshoods.gr](https://athenshoods.gr) | Live |
 | Οδοί της Αθήνας | streets.athensapps.gr | Σύντομα |
 
