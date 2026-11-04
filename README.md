@@ -21,10 +21,10 @@
 ```js
 {
   name: "Όνομα εφαρμογής",
+  sign: "ΚΕΙΜΕΝΟ ΠΙΝΑΚΙΔΑΣ",  // κεφαλαία χωρίς τόνους
+  latin: "Keimeno pinakidas", // λατινικοί χαρακτήρες κάτω από την πινακίδα
   url: "https://onoma.athensapps.gr",
   status: "live",            // "live" | "beta" | "soon"
-  color: "#1b3a6b",
-  icon: '<path d="..." stroke="currentColor" stroke-width="2.2" fill="none"/>',
   description: "Σύντομη περιγραφή.",
   tags: ["Tag 1", "Tag 2"]
 }
